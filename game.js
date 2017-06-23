@@ -7,10 +7,7 @@ const words = fs.readFileSync('codenames-word-list.txt').toString().split('\n');
 
 var newGame = () => {
   var wordList = _.sampleSize(words, 25);
-  var result = {
-    
-    
-  };
+  var result = {};
   var first = _.sample(['red', 'blue']);
   result.firstPlayer = first;
   var teams = [
@@ -41,14 +38,16 @@ var newGame = () => {
   ];
   teams.push(first);
 
-  result.cards = [];  
+  result.cards = [];
   wordList.forEach(function(word) {
-    var newCard = card.card(word);
-
+    // deal random team
     var index = _.random(0, teams.length - 1);
     var team = teams[index];
     teams.splice(index, 1);
-    newCard.team = team;
+
+    // make new card
+    var newCard = new card.card(word, false, team);
+
     result.cards.push(newCard);
   });
 

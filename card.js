@@ -1,12 +1,11 @@
-const card = function (word) {
-    var result = {
-        word: word,
-        revealed: false,
-        team: undefined
-    }
-    return result;
-};
+class card {
+  constructor(word, revealed, team) {
+    this.word = word;
+    this.revealed = revealed;
+    this.team = team;
+  }
+}
 
 module.exports = {
-    card
+  card,
 };
