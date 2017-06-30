@@ -12,8 +12,8 @@
         var Card = {
             view: function () {
                 return m(".card-list", game.cards.map(function (card) {
-                    return m(`.card-item ${card.team}`, [m(".word", `${card.word}`),
-                    m(".team", `${card.team}`)])
+                    let clr = card.revealed ? card.team : '';
+                    return m(`.card-item ${clr}`, { onclick: function () { card.revealed = !card.revealed; } }, m(".word", `${card.word}`))
                 }))
             }
         }
