@@ -6,37 +6,29 @@ const card = require('./card');
 const words = fs.readFileSync('codenames-word-list.txt').toString().split('\n');
 
 var newGame = () => {
-  var wordList = _.sampleSize(words, 25);
   var result = {};
-  var first = _.sample(['red', 'blue']);
+  var wordList = _.sampleSize(words, 25); // get words for game
+
+  var teams = []; // an array to hold all the teams to be assigned for this game
+  var first = _.sample(['red', 'blue']); // set first player
   result.firstPlayer = first;
-  var teams = [
-    'red',
-    'red',
-    'red',
-    'red',
-    'red',
-    'red',
-    'red',
-    'red',
-    'blue',
-    'blue',
-    'blue',
-    'blue',
-    'blue',
-    'blue',
-    'blue',
-    'blue',
-    'assassin',
-    'bystander',
-    'bystander',
-    'bystander',
-    'bystander',
-    'bystander',
-    'bystander',
-    'bystander',
-  ];
   teams.push(first);
+
+  // build layout of teams
+  const teamSize = {
+    red: 8,
+    blue: 8,
+    bystander: 7,
+    assassin: 1,
+  };
+
+  for (var team in teamSize) {
+    // if (teamSize.hasOwnProperty(team)) {
+    for (let i = 0; i < teamSize[team]; i++) {
+      teams.push(team);
+      // }
+    }
+  }
 
   result.cards = [];
   wordList.forEach(function(word) {
