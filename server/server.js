@@ -9,7 +9,6 @@ app.get('/', function (req, res) {
 
 app.get('/new', (req, res) => {
   let result = game.newGame()
-  console.log(result);
   res.send(result);
 })
 
