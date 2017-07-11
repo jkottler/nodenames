@@ -17,6 +17,11 @@ app.get('/new', (req, res) => {
   res.send(result);
 })
 
+app.get('/game/:gameid', (req, res) => {
+  console.log(`show game ${req.params.gameid}`);
+  res.sendFile('./index.html', { root: __dirname });
+})
+
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });

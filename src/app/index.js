@@ -37,7 +37,7 @@ function newGame() {
   })
     .then(function (data) {
       game = data;
-      console.log(data);
+      window.location = `/game/${data.id}`;
     })
 }
 
