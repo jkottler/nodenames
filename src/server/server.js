@@ -2,6 +2,9 @@ const express = require('express');
 const game = require('./game');
 
 const app = express();
+
+const port = process.env.PORT || 3000;
+
 app.use('/static', express.static('bin'))
 app.use('/static', express.static('public'))
 
@@ -14,6 +17,6 @@ app.get('/new', (req, res) => {
   res.send(result);
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
+});
