@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/new', (req, res) => {
-  let result = game.newGame()
+  let result = new game.Game()
   res.send(result);
 })
 
