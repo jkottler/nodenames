@@ -1,4 +1,4 @@
-class card {
+class Card {
   constructor(word, revealed, team) {
     this.word = word;
     this.revealed = revealed;
@@ -7,5 +7,5 @@ class card {
 }
 
 module.exports = {
-  card,
+  Card,
 };
